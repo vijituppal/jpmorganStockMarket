@@ -18,6 +18,10 @@ import com.jpmorgan.stockmarket.service.TradeDetailsService;
  */
 public class SuperSimpleStockMarketApplication {
 	
+	/**
+	 * Main method 
+	 * @param args
+	 */
 	public static void main (String[] args){
 		
 		StockMarketService service = new StockMarketService();
