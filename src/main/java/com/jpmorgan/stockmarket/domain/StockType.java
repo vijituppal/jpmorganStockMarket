@@ -5,6 +5,8 @@ package com.jpmorgan.stockmarket.domain;
  * Stock type enum class
  */
 public enum StockType {
+	/** stock type common	 */
 	COMMON,
+	/** stock type preferred  */
 	PREFERRED
 }

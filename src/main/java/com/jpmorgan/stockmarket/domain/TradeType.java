@@ -6,5 +6,9 @@ package com.jpmorgan.stockmarket.domain;
  * Trade type enum class
  */
 public enum TradeType {
-BUY,SELL
+
+	/** buy type trade	 */
+	BUY,
+	/** sell type trade	 */
+	SELL
 }

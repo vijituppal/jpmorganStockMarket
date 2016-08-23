@@ -2,7 +2,6 @@ package com.jpmorgan.stockmarket.service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Random;
 
 import static com.jpmorgan.stockmarket.domain.StockType.PREFERRED;
 import static org.junit.Assert.*;
@@ -27,9 +26,7 @@ public class TestTradeDetailsService {
 	private StockMarketService service;
 	/** the stock list */
 	private List<Stock> stockList;
-	/** the random instance to generate random number */
-	private Random random = new Random();
-	
+		
 	/**
 	 * Set up data for testing methods
 	 */
