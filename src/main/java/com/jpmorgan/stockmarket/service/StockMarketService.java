@@ -7,16 +7,18 @@ import com.jpmorgan.stockmarket.domain.Stock;
 import com.jpmorgan.stockmarket.domain.StockType;
 import com.jpmorgan.stockmarket.repository.StocksRepository;
 
+/**
+ * @author Vijit
+ * This class populates stocks from repository and responsible for calculating
+ * dividend yield and P/E ratio for stocks using price.
+ */
 public class StockMarketService {
 	
 	
-	TradeDetailsService details = new TradeDetailsService();
     /**
-     *
-     * @param stock A stock to be used during the calculation of the dividend yield.
-     * @param price Price to be used during the calculation of the dividend yield.
-     * @return
-     * @throws IllegalArgumentException if price is zero
+     * @param stock the stock for which dividend yield is to be calculated.
+     * @param price the price used for calculating dividend yield.
+     * @return dividend yield
      */
     public BigDecimal getDividendYield(Stock stock, BigDecimal price) {
     	BigDecimal dividendYield;
@@ -29,9 +31,8 @@ public class StockMarketService {
     }
 
     /**
-     *
-     * @param stock A stock to be used during the calculation of the PE ratio.
-     * @param price Price to be used during the calculation of the PE ratio.
+     * @param stock the stock for which dividend yield is to be calculated.
+     * @param price the price used for calculating dividend yield.
      * @return PE ratio
      */
     public BigDecimal getPERatio(Stock stock, BigDecimal price) {
@@ -44,28 +45,11 @@ public class StockMarketService {
         return peRatio;
     }
     
- 
-
+      
     /**
-     * Calculates Volume Weighted Stock Price based on trades in the past 15 minutes.
-     * @return Volume Weighted Stock Price.
+     * Populates stock list from repository
+     * @return list of stocks
      */
-    
-    public double getVolumeWeightedStockPrice(Stock stock) {
-    	
-		return details.getVolumeWeightedStockPrice(stock);
-    }
-
-    /**
-     * Calculates GBCE All Share Index using the geometric mean of the prices for all stocks.
-     * @return GBCE All Share Index.
-     */
-    
-    public BigDecimal getGBCEAllShareIndex() {
-       
-        return details.getGBCEAllShareIndex();
-    }
-    
     public List<Stock> getStocks(){
     	StocksRepository repository = new StocksRepository();
     	return repository.getStocks();

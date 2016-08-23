@@ -10,6 +10,12 @@ import com.jpmorgan.stockmarket.domain.TradeType;
 import com.jpmorgan.stockmarket.service.StockMarketService;
 import com.jpmorgan.stockmarket.service.TradeDetailsService;
 
+/**
+ * @author Vijit
+ * 
+ * Main application class which executes every implemented functionality 
+ * of stock market application/features.
+ */
 public class SuperSimpleStockMarketApplication {
 	
 	public static void main (String[] args){
@@ -17,22 +23,22 @@ public class SuperSimpleStockMarketApplication {
 		StockMarketService service = new StockMarketService();
 		Random random = new Random();
 		List<Stock> stocks = service.getStocks();
-		Stock stock = stocks.iterator().next();
+		Stock stock = stocks.get(3);
 		System.out.println("The Dividend Yield of stock "+stock.getSymbol()+" :"+service.getDividendYield(stock, new BigDecimal(500)));
 		System.out.println();
 		System.out.println("The P/E ratio of stock "+stock.getSymbol()+" :"+service.getPERatio(stock, new BigDecimal(500)));
 		System.out.println();
 		
 		 //Trade
-    	TradeDetailsService tradeDetails = new TradeDetailsService();
+    	TradeDetailsService tradeDetailService = new TradeDetailsService();
     	
-    	for(int i = 1; i <= 100; i++){ 
-    		tradeDetails.addTrade(new Trade(stocks.get(random.nextInt(5)), random.nextInt(500), random.nextBoolean()?TradeType.BUY:TradeType.SELL, random.nextInt(500)));
+    	for(int i = 1; i <= 30; i++){ 
+    		tradeDetailService.addTrade(new Trade(stocks.get(random.nextInt(5)), random.nextInt(150), random.nextBoolean()?TradeType.BUY:TradeType.SELL, random.nextInt(300)));
     	}
     	
-    	System.out.println("The volume weighted stock price of stock "+stock.getSymbol()+":"+service.getVolumeWeightedStockPrice(stock));
+    	System.out.println("The volume weighted stock price of stock "+stock.getSymbol()+":"+tradeDetailService.getVolumeWeightedStockPrice(stock));
     	System.out.println();
-    	System.out.println("Calculated GBCE All share index is "+service.getGBCEAllShareIndex());
+    	System.out.println("Calculated GBCE All share index is "+tradeDetailService.getGBCEAllShareIndex());
     	
 	}
 
